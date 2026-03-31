@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techniques | Sakura Judo & Ju-Jitsu – Lyon</title>
+  <meta name="description" content="Guide technique complet du Judo : judogi, salut, chutes (ukemi), techniques par grade de la ceinture blanche à la ceinture marron, préparation au 1er Dan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Shippori+Mincho:wght@400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="judo-style.css">
+  <style>
+    /* ── TECHNIQUES PAGE EXTRAS ─────────────────────────── */
+    .tech-hero { background: var(--blue-night); }
+    .tech-hero .page-hero__title { color: var(--ivory); }
+
+    /* JUDOGI section */
+    .judogi-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: start; }
+    .judogi-diagram { position: relative; }
+    .judogi-svg-wrap {
+      background: var(--ivory);
+      border: 1px solid var(--ivory-dark);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .judogi-parts { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .judogi-part {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      background: var(--ivory);
+      border: 1px solid var(--ivory-dark);
+      border-left: 3px solid var(--gold);
+    }
+    .judogi-part__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .judogi-part__name { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); min-width: 100px; }
+    .judogi-part__jp { font-family: var(--font-jp); font-size: 0.9rem; color: var(--gold); min-width: 60px; }
+    .judogi-part__desc { font-size: 0.82rem; color: var(--gray-warm); }
+
+    /* SALUT */
+    .rei-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .rei-card {
+      background: var(--white);
+      border: 1px solid var(--ivory-dark);
+      padding: 0;
+      overflow: hidden;
+    }
+    .rei-card__visual {
+      height: 180px;
+      background: linear-gradient(135deg, var(--blue-night) 0%, var(--blue-deep) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .rei-card__visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(255,255,255,0.03) 20px),repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(255,255,255,0.03) 20px);
+    }
+    .rei-figure { font-size: 5rem; line-height: 1; position: relative; z-index: 1; }
+    .rei-card__body { padding: 20px; }
+    .rei-card__num { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 4px; }
+    .rei-card__title { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 4px; }
+    .rei-card__jp { font-family: var(--font-jp); font-size: 0.9rem; color: var(--gold); display: block; margin-bottom: 8px; }
+    .rei-card__desc { font-size: 0.84rem; color: var(--gray-warm); line-height: 1.65; }
+
+    /* CHUTES */
+    .ukemi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .ukemi-card {
+      background: var(--white); border: 1px solid var(--ivory-dark);
+      padding: 0; overflow: hidden;
+    }
+    .ukemi-card__header {
+      padding: 20px 24px 0;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .ukemi-card__num {
+      font-family: var(--font-jp); font-size: 2.5rem; color: var(--gold);
+      opacity: 0.5; line-height: 1; flex-shrink: 0;
+    }
+    .ukemi-card__titles h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; }
+    .ukemi-card__titles span { font-family: var(--font-jp); font-size: 0.85rem; color: var(--gold); }
+    .ukemi-steps { padding: 16px 24px 24px; }
+    .ukemi-step {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid var(--ivory-dark);
+    }
+    .ukemi-step:last-child { border: none; }
+    .ukemi-step__n {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--blue-night); color: var(--ivory);
+      font-size: 0.7rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .ukemi-step p { font-size: 0.85rem; color: var(--gray-warm); line-height: 1.6; }
+    .ukemi-visual {
+      height: 100px; margin: 0 24px 0;
+      background: linear-gradient(135deg, var(--blue-night) 0%, var(--blue-deep) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; border-radius: var(--radius-sm);
+      margin-bottom: 0;
+    }
+    .ukemi-tip {
+      padding: 10px 24px 20px;
+      font-size: 0.8rem; color: var(--gold);
+      border-top: 1px solid var(--ivory-dark);
+      background: rgba(184,146,42,0.04);
+    }
+    .ukemi-tip::before { content: '💡 '; }
+
+    /* GRADES */
+    .grades-nav {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 40px; padding: 20px;
+      background: var(--white); border: 1px solid var(--ivory-dark);
+      position: sticky; top: var(--nav-h); z-index: 10;
+    }
+    .grade-nav-btn {
+      padding: 8px 18px;
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
+      border: 1px solid var(--ivory-dark); background: transparent;
+      cursor: pointer; transition: var(--t-fast); border-radius: var(--radius-sm);
+      text-decoration: none; color: var(--gray-warm);
+    }
+    .grade-nav-btn:hover { color: var(--ink); border-color: var(--gray-light); }
+    .grade-nav-btn.active { background: var(--blue-night); color: var(--ivory); border-color: var(--blue-night); }
+
+    .grade-section {
+      margin-bottom: 72px; scroll-margin-top: calc(var(--nav-h) + 80px);
+    }
+    .grade-header {
+      display: flex; align-items: center; gap: 20px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+    }
+    .grade-belt-vis {
+      width: 56px; height: 14px; flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.12);
+    }
+    .grade-header__text h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 2px; }
+    .grade-header__text .kyu { font-family: var(--font-jp); font-size: 0.9rem; color: var(--gold); }
+
+    .tech-categories { display: flex; flex-direction: column; gap: 20px; }
+    .tech-cat { }
+    .tech-cat__title {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+    }
+    .tech-cat__title::after { content:''; flex:1; height:1px; background:rgba(184,146,42,0.2); }
+    .tech-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+    .tech-card {
+      background: var(--white); border: 1px solid var(--ivory-dark);
+      padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start;
+      transition: var(--t-fast); cursor: default;
+    }
+    .tech-card:hover { border-color: rgba(184,146,42,0.35); transform: translateX(2px); }
+    .tech-card__kanji {
+      font-family: var(--font-jp); font-size: 1.8rem; line-height: 1;
+      color: rgba(184,146,42,0.3); flex-shrink: 0; width: 36px; text-align: center;
+    }
+    .tech-card__body { flex: 1; }
+    .tech-card__fr { font-weight: 500; font-size: 0.92rem; color: var(--ink); }
+    .tech-card__jp { font-family: var(--font-jp); font-size: 0.78rem; color: var(--gold); }
+    .tech-card__desc { font-size: 0.78rem; color: var(--gray-warm); line-height: 1.5; margin-top: 3px; }
+    .tech-card__cat {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 2px 7px; border: 1px solid var(--ivory-dark);
+      color: var(--gray-light); align-self: flex-start; flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* DAN */
+    .dan-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); }
+    .dan-reqs { display: flex; flex-direction: column; gap: 16px; }
+    .dan-req {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 18px 20px;
+      background: var(--white); border: 1px solid var(--ivory-dark);
+      border-left: 3px solid var(--gold);
+    }
+    .dan-req__icon { font-size: 1.4rem; flex-shrink: 0; }
+    .dan-req__body h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; margin-bottom: 4px; }
+    .dan-req__body p { font-size: 0.85rem; color: var(--gray-warm); line-height: 1.6; }
+    .dan-kata { display: flex; flex-direction: column; gap: 12px; }
+    .dan-kata-item {
+      padding: 16px 20px;
+      background: var(--white); border: 1px solid var(--ivory-dark);
+      display: flex; gap: 14px; align-items: center;
+    }
+    .dan-kata-item__kanji { font-family: var(--font-jp); font-size: 2rem; color: var(--gold); opacity: 0.6; flex-shrink: 0; }
+    .dan-kata-item h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; margin-bottom: 3px; }
+    .dan-kata-item p { font-size: 0.8rem; color: var(--gray-warm); }
+
+    /* grade color helpers */
+    .belt-white  { background: #f0f0f0; }
+    .belt-yellow { background: #f5d020; }
+    .belt-orange { background: #e8742a; }
+    .belt-green  { background: #3a8a3a; }
+    .belt-blue   { background: #2a60b0; }
+    .belt-brown  { background: #7a4a20; }
+    .belt-black  { background: #1a1a1a; }
+
+    .grade-header.gh-white  { background: rgba(240,240,240,0.4); border-left: 4px solid #ccc; }
+    .grade-header.gh-yellow { background: rgba(245,208,32,0.08); border-left: 4px solid #f5d020; }
+    .grade-header.gh-orange { background: rgba(232,116,42,0.08); border-left: 4px solid #e8742a; }
+    .grade-header.gh-green  { background: rgba(58,138,58,0.08); border-left: 4px solid #3a8a3a; }
+    .grade-header.gh-blue   { background: rgba(42,96,176,0.08); border-left: 4px solid #2a60b0; }
+    .grade-header.gh-brown  { background: rgba(122,74,32,0.08); border-left: 4px solid #7a4a20; }
+
+    @media (max-width: 768px) {
+      .judogi-layout { grid-template-columns: 1fr; }
+      .dan-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  <header class="header" role="banner" id="header">
+    <nav class="nav" role="navigation" aria-label="Navigation principale">
+      <a href="judo-index.html" class="nav__logo" aria-label="Sakura Judo Club – Accueil">
+        <div class="logo-mon" aria-hidden="true">桜</div>
+        <div class="logo-text-wrap"><span class="logo-name">SAKURA</span><span class="logo-sub">Judo &amp; Ju-Jitsu</span></div>
+      </a>
+      <button class="nav__burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+      <ul class="nav__menu" id="navMenu" role="list">
+        <li><a href="judo-index.html" class="nav__link">Accueil</a></li>
+        <li><a href="judo-club.html" class="nav__link">Le Club</a></li>
+        <li><a href="judo-sensei.html" class="nav__link">Sensei</a></li>
+        <li><a href="judo-horaires.html" class="nav__link">Horaires</a></li>
+        <li><a href="judo-tarifs.html" class="nav__link">Tarifs</a></li>
+        <li><a href="judo-techniques.html" class="nav__link active" aria-current="page">Techniques</a></li>
+        <li><a href="judo-inscription.html" class="nav__link">Inscription</a></li>
+        <li><a href="judo-contact.html" class="nav__link">Contact</a></li>
+        <li><a href="judo-inscription.html" class="nav__cta">Cours d'essai</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero tech-hero" aria-label="Techniques">
+      <div class="page-hero__deco" aria-hidden="true"><span lang="ja">技</span></div>
+      <div class="container"><div class="page-hero__content">
+        <div class="section-tag reveal">Référentiel technique</div>
+        <h1 class="page-hero__title reveal">Techniques</h1>
+        <p class="page-hero__sub reveal">Du judogi à la ceinture noire — tout ce qu'il faut savoir.</p>
+      </div></div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         1. LE JUDOGI
+    ═══════════════════════════════════════ -->
+    <section class="section" id="judogi" aria-labelledby="judogi-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Équipement</div>
+          <h2 id="judogi-title" class="section-title">Le Judogi<br><em>La tenue du judoka</em></h2>
+        </div>
+        <div class="judogi-layout">
+          <div class="judogi-diagram reveal">
+            <div class="judogi-svg-wrap">
+              <!-- SVG schéma judogi simplifié -->
+              <svg viewBox="0 0 280 380" width="240" height="320" xmlns="http://www.w3.org/2000/svg" aria-label="Schéma du judogi" role="img">
+                <defs>
+                  <style>.jlabel{font-family:'DM Sans',sans-serif;font-size:10px;fill:#8a8070;}</style>
+                </defs>
+                <!-- Uwagi (veste) -->
+                <path d="M90,40 L60,50 L30,90 L40,180 L80,180 L80,120 L200,120 L200,180 L240,180 L250,90 L220,50 L190,40 Z" fill="#f0ebe0" stroke="#c5bfb4" stroke-width="1.5"/>
+                <!-- col gauche -->
+                <path d="M90,40 L140,100 L140,180" fill="none" stroke="#c5bfb4" stroke-width="2"/>
+                <!-- col droit -->
+                <path d="M190,40 L140,100" fill="none" stroke="#c5bfb4" stroke-width="2"/>
+                <!-- Manche gauche -->
+                <path d="M30,90 L10,150 L30,160 L50,110" fill="#e8e3d8" stroke="#c5bfb4" stroke-width="1.5"/>
+                <!-- Manche droite -->
+                <path d="M250,90 L270,150 L250,160 L230,110" fill="#e8e3d8" stroke="#c5bfb4" stroke-width="1.5"/>
+                <!-- Shitabaki (pantalon) -->
+                <rect x="80" y="180" width="120" height="150" rx="4" fill="#ede8df" stroke="#c5bfb4" stroke-width="1.5"/>
+                <!-- Jambe gauche -->
+                <rect x="80" y="250" width="52" height="80" rx="3" fill="#e8e3d8" stroke="#c5bfb4" stroke-width="1.5"/>
+                <!-- Jambe droite -->
+                <rect x="148" y="250" width="52" height="80" rx="3" fill="#e8e3d8" stroke="#c5bfb4" stroke-width="1.5"/>
+                <!-- Ceinture -->
+                <rect x="70" y="175" width="140" height="12" rx="2" fill="#b8922a" opacity="0.8"/>
+                <!-- Labels -->
+                <text x="14" y="88" class="jlabel">Uwagi</text>
+                <text x="14" y="100" class="jlabel" fill="#b8922a" font-size="8">(veste)</text>
+                <line x1="34" y1="95" x2="30" y2="115" stroke="#c5bfb4" stroke-width="0.8"/>
+
+                <text x="245" y="88" class="jlabel">Sode</text>
+                <text x="245" y="100" class="jlabel" fill="#b8922a" font-size="8">(manche)</text>
+                <line x1="256" y1="105" x2="255" y2="130" stroke="#c5bfb4" stroke-width="0.8"/>
+
+                <text x="148" y="92" class="jlabel" text-anchor="middle">Eri</text>
+                <text x="148" y="104" class="jlabel" text-anchor="middle" fill="#b8922a" font-size="8">(col)</text>
+                <line x1="148" y1="107" x2="142" y2="110" stroke="#c5bfb4" stroke-width="0.8"/>
+
+                <text x="200" y="186" class="jlabel">Obi</text>
+                <text x="200" y="198" class="jlabel" fill="#b8922a" font-size="8">(ceinture)</text>
+                <line x1="200" y1="185" x2="210" y2="183" stroke="#c5bfb4" stroke-width="0.8"/>
+
+                <text x="4" y="234" class="jlabel">Shitabaki</text>
+                <text x="4" y="246" class="jlabel" fill="#b8922a" font-size="8">(pantalon)</text>
+                <line x1="72" y1="230" x2="52" y2="240" stroke="#c5bfb4" stroke-width="0.8"/>
+              </svg>
+            </div>
+            <div class="judogi-parts">
+              <div class="judogi-part"><div class="judogi-part__dot"></div><span class="judogi-part__name">Uwagi</span><span class="judogi-part__jp">上着</span><span class="judogi-part__desc">Veste croisée, coton épais (400–750 g/m²)</span></div>
+              <div class="judogi-part"><div class="judogi-part__dot"></div><span class="judogi-part__name">Shitabaki</span><span class="judogi-part__jp">下穿き</span><span class="judogi-part__desc">Pantalon renforcé aux genoux</span></div>
+              <div class="judogi-part"><div class="judogi-part__dot"></div><span class="judogi-part__name">Obi</span><span class="judogi-part__jp">帯</span><span class="judogi-part__desc">Ceinture indiquant le grade</span></div>
+              <div class="judogi-part"><div class="judogi-part__dot"></div><span class="judogi-part__name">Eri</span><span class="judogi-part__jp">衿</span><span class="judogi-part__desc">Col renforcé, prise obligatoire</span></div>
+              <div class="judogi-part"><div class="judogi-part__dot"></div><span class="judogi-part__name">Sode</span><span class="judogi-part__jp">袖</span><span class="judogi-part__desc">Manche — prise réglementaire au poignet</span></div>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="section-tag">Qu'est-ce que c'est ?</div>
+            <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.8rem);">Porter le judogi<br><em>avec respect</em></h2>
+            <p>Le <strong>judogi</strong> (柔道着) est la tenue traditionnelle du pratiquant de judo. Il a été conçu par Jigorō Kanō lui-même à la fin du XIXe siècle pour permettre les saisies, les projections et le travail au sol dans de bonnes conditions de sécurité.</p>
+            <p>Un judogi de qualité doit être <strong>homologué IJF</strong> pour la compétition. Pour les cours loisir, une tenue standard suffit. Le tissu le plus courant est le <em>simple weave</em> (tissage simple) pour les débutants, le <em>double weave</em> (tissage double, plus épais et résistant) pour les confirmés.</p>
+
+            <div class="section-tag" style="margin-top:24px;">Entretien</div>
+            <div class="equip-grid" style="margin-top:12px;">
+              <div class="equip-card"><div class="equip-card__icon">🌡️</div><h3>Lavage</h3><p>30–40°C maximum. Un lavage à chaud rétrécit le judogi. Retourner avant lavage.</p></div>
+              <div class="equip-card"><div class="equip-card__icon">☀️</div><h3>Séchage</h3><p>À plat ou suspendu à l'air libre. Éviter le sèche-linge qui détériore les fibres.</p></div>
+              <div class="equip-card"><div class="equip-card__icon">✅</div><h3>Hygiène</h3><p>Laver après chaque entraînement. Un judogi propre est une marque de respect envers les partenaires.</p></div>
+              <div class="equip-card"><div class="equip-card__icon">📏</div><h3>Taille</h3><p>Les manches doivent dépasser le poignet de 5 cm. Le pantalon doit couvrir la cheville.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         2. LE SALUT — REI
+    ═══════════════════════════════════════ -->
+    <section class="section section--light" id="rei" aria-labelledby="rei-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Rituel fondateur</div>
+          <h2 id="rei-title" class="section-title">Le Salut<br><em>礼 — Rei</em></h2>
+          <p class="section-desc">Le salut est la première et la dernière technique du judo. Il exprime le respect mutuel entre pratiquants, avant et après chaque combat, chaque cours, chaque entrée sur le tatami.</p>
+        </div>
+        <div class="rei-grid">
+          <div class="rei-card reveal">
+            <div class="rei-card__visual"><div class="rei-figure" aria-hidden="true">🧍</div></div>
+            <div class="rei-card__body">
+              <span class="rei-card__num">01</span>
+              <h3 class="rei-card__title">Ritsurei</h3>
+              <span class="rei-card__jp">立礼</span>
+              <p class="rei-card__desc">Le salut <strong>debout</strong>. Se placer droite, pieds légèrement écartés, mains le long du corps. S'incliner à environ 30° en expirant, regard vers le bas-devant. Utilisé à l'entrée et à la sortie du dojo, et entre pratiquants avant de commencer.</p>
+            </div>
+          </div>
+          <div class="rei-card reveal">
+            <div class="rei-card__visual"><div class="rei-figure" aria-hidden="true">🙇</div></div>
+            <div class="rei-card__body">
+              <span class="rei-card__num">02</span>
+              <h3 class="rei-card__title">Zarei</h3>
+              <span class="rei-card__jp">座礼</span>
+              <p class="rei-card__desc">Le salut <strong>assis en seiza</strong>. S'agenouiller (genou gauche d'abord), s'asseoir sur les talons, mains à plat sur les cuisses. Incliner le buste en portant les mains devant soi sur le tatami. Utilisé en début et fin de cours, face au dojo ou au sensei.</p>
+            </div>
+          </div>
+          <div class="rei-card reveal">
+            <div class="rei-card__visual"><div class="rei-figure" aria-hidden="true">🏯</div></div>
+            <div class="rei-card__body">
+              <span class="rei-card__num">03</span>
+              <h3 class="rei-card__title">Salut au dojo</h3>
+              <span class="rei-card__jp">道場礼</span>
+              <p class="rei-card__desc">En entrant et en quittant le tatami, effectuer un <em>ritsurei</em> face au dojo (ou au kamiza — espace d'honneur). Ce geste marque la transition entre le monde ordinaire et l'espace de la pratique. Il témoigne du respect pour le lieu d'entraînement.</p>
+            </div>
+          </div>
+          <div class="rei-card reveal">
+            <div class="rei-card__visual"><div class="rei-figure" aria-hidden="true">🤝</div></div>
+            <div class="rei-card__body">
+              <span class="rei-card__num">04</span>
+              <h3 class="rei-card__title">Salut au partenaire</h3>
+              <span class="rei-card__jp">相互礼</span>
+              <p class="rei-card__desc">Avant et après chaque <em>randori</em> (combat libre) ou exercice de technique. Se faire face à distance, effectuer un <em>ritsurei</em> simultané. Ce salut reconnaît que l'adversaire est un partenaire de progression, non un ennemi.</p>
+            </div>
+          </div>
+        </div>
+        <div class="philosophy__quote reveal" style="margin-top:40px;max-width:680px;margin-left:auto;margin-right:auto;">
+          <div class="quote-mark" aria-hidden="true">"</div>
+          <blockquote>
+            <p>Le judo commence et finit par le salut. Celui qui ne salue pas ne fait pas de judo.</p>
+            <footer>— Principe fondamental du dojo</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         3. LES CHUTES — UKEMI
+    ═══════════════════════════════════════ -->
+    <section class="section" id="ukemi" aria-labelledby="ukemi-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Sécurité absolue</div>
+          <h2 id="ukemi-title" class="section-title">Les Chutes<br><em>受身 — Ukemi</em></h2>
+          <p class="section-desc">Les ukemi sont la première technique enseignée en judo. Savoir chuter sans se blesser est la condition de toute progression — et une compétence précieuse dans la vie quotidienne.</p>
+        </div>
+        <div class="ukemi-grid">
+
+          <div class="ukemi-card reveal">
+            <div class="ukemi-visual" aria-hidden="true">⬅️</div>
+            <div class="ukemi-card__header">
+              <span class="ukemi-card__num" lang="ja">一</span>
+              <div class="ukemi-card__titles">
+                <h3>Ukemi Latérale</h3>
+                <span lang="ja">横受身 Yoko Ukemi</span>
+              </div>
+            </div>
+            <div class="ukemi-steps">
+              <div class="ukemi-step"><span class="ukemi-step__n">1</span><p>Partir debout, initier la chute sur le côté droit ou gauche.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">2</span><p>Frapper le sol du bras tendu à 45° du corps au moment du contact, paume vers le bas.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">3</span><p>La tête reste levée, ne touche pas le sol. Le bras frappe fort pour dissiper l'énergie.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">4</span><p>Le corps roule sur le côté, pas de contact des genoux ou du bassin au sol.</p></div>
+            </div>
+            <div class="ukemi-tip">La chute latérale est la première apprise — base de toutes les autres.</div>
+          </div>
+
+          <div class="ukemi-card reveal">
+            <div class="ukemi-visual" aria-hidden="true">⬇️</div>
+            <div class="ukemi-card__header">
+              <span class="ukemi-card__num" lang="ja">二</span>
+              <div class="ukemi-card__titles">
+                <h3>Ukemi Arrière</h3>
+                <span lang="ja">後受身 Ushiro Ukemi</span>
+              </div>
+            </div>
+            <div class="ukemi-steps">
+              <div class="ukemi-step"><span class="ukemi-step__n">1</span><p>Partir accroupi, laisser le dos s'arrondir en « C » en reculant.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">2</span><p>Poser fesses, dos (vertèbre par vertèbre), frapper des deux bras à 45°.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">3</span><p>Lever les jambes à la verticale pour protéger la nuque — ne jamais poser la tête.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">4</span><p>Le menton reste rentré sur la poitrine tout au long du mouvement.</p></div>
+            </div>
+            <div class="ukemi-tip">Rentrer le menton est l'automatisme qui protège la nuque — à travailler en premier.</div>
+          </div>
+
+          <div class="ukemi-card reveal">
+            <div class="ukemi-visual" aria-hidden="true">🔄</div>
+            <div class="ukemi-card__header">
+              <span class="ukemi-card__num" lang="ja">三</span>
+              <div class="ukemi-card__titles">
+                <h3>Ukemi Avant Roulée</h3>
+                <span lang="ja">前回り受身 Mae Mawari Ukemi</span>
+              </div>
+            </div>
+            <div class="ukemi-steps">
+              <div class="ukemi-step"><span class="ukemi-step__n">1</span><p>Partir debout, avancer un pied, plonger l'épaule vers le sol en arrondissant le bras.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">2</span><p>Le bras forme un arc de cercle : main, avant-bras, épaule, dos — roulade diagonale.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">3</span><p>Arriver en position latérale, frapper le sol du bras libre.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">4</span><p>Se relever en une seule impulsion ou rester en position de défense.</p></div>
+            </div>
+            <div class="ukemi-tip">La roulade diagonale répartit l'impact — ne jamais rouler en ligne droite.</div>
+          </div>
+
+          <div class="ukemi-card reveal">
+            <div class="ukemi-visual" aria-hidden="true">⬆️</div>
+            <div class="ukemi-card__header">
+              <span class="ukemi-card__num" lang="ja">四</span>
+              <div class="ukemi-card__titles">
+                <h3>Ukemi Avant</h3>
+                <span lang="ja">前受身 Mae Ukemi</span>
+              </div>
+            </div>
+            <div class="ukemi-steps">
+              <div class="ukemi-step"><span class="ukemi-step__n">1</span><p>Chute vers l'avant, bras tendus et légèrement fléchis formant un triangle.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">2</span><p>Les paumes et avant-bras absorbent l'impact, simultanément.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">3</span><p>La tête se tourne de côté — ni les genoux, ni les hanches ne touchent le sol.</p></div>
+              <div class="ukemi-step"><span class="ukemi-step__n">4</span><p>Le corps reste en planche, les orteils sur le sol, muscles abdominaux contractés.</p></div>
+            </div>
+            <div class="ukemi-tip">Utilisée lors des chutes par-dessus un obstacle ou lors de certaines projections.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         4. TECHNIQUES PAR GRADE
+    ═══════════════════════════════════════ -->
+    <section class="section section--light" id="techniques" aria-labelledby="tech-main-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Programme technique FFJDA</div>
+          <h2 id="tech-main-title" class="section-title">Techniques par grade<br><em>de la blanche à la marron</em></h2>
+          <p class="section-desc">Les techniques listées correspondent au programme officiel de la Fédération Française de Judo. Chaque passage de grade est évalué sur la maîtrise technique, la connaissance théorique et l'esprit sportif.</p>
+        </div>
+
+        <!-- Nav des grades -->
+        <nav class="grades-nav reveal" aria-label="Navigation par grade">
+          <a href="#grade-blanche" class="grade-nav-btn active">⬜ Blanche – 6e Kyu</a>
+          <a href="#grade-jaune" class="grade-nav-btn">🟡 Jaune – 5e Kyu</a>
+          <a href="#grade-orange" class="grade-nav-btn">🟠 Orange – 4e Kyu</a>
+          <a href="#grade-verte" class="grade-nav-btn">🟢 Verte – 3e Kyu</a>
+          <a href="#grade-bleue" class="grade-nav-btn">🔵 Bleue – 2e Kyu</a>
+          <a href="#grade-marron" class="grade-nav-btn">🟤 Marron – 1er Kyu</a>
+        </nav>
+
+        <!-- ── CEINTURE BLANCHE ── -->
+        <div class="grade-section reveal" id="grade-blanche">
+          <div class="grade-header gh-white">
+            <div class="grade-belt-vis belt-white"></div>
+            <div class="grade-header__text">
+              <h2>Ceinture Blanche</h2>
+              <span class="kyu">6e Kyu — 白帯 Shiro Obi</span>
+            </div>
+          </div>
+          <p style="color:var(--gray-warm);margin-bottom:24px;font-size:0.95rem;">La ceinture blanche symbolise la neige vierge — l'esprit non encore formé. Le débutant apprend les bases absolues : chutes, positions, premiers déplacements.</p>
+          <div class="tech-categories">
+            <div class="tech-cat">
+              <div class="tech-cat__title">Ukemi (受身) — Chutes</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">横</div><div class="tech-card__body"><div class="tech-card__fr">Yoko Ukemi</div><div class="tech-card__jp">横受身</div><div class="tech-card__desc">Chute latérale des deux côtés</div></div><span class="tech-card__cat">Ukemi</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">後</div><div class="tech-card__body"><div class="tech-card__fr">Ushiro Ukemi</div><div class="tech-card__jp">後受身</div><div class="tech-card__desc">Chute arrière, menton rentré</div></div><span class="tech-card__cat">Ukemi</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">前</div><div class="tech-card__body"><div class="tech-card__fr">Mae Mawari Ukemi</div><div class="tech-card__jp">前回り受身</div><div class="tech-card__desc">Roulade avant diagonale</div></div><span class="tech-card__cat">Ukemi</span></div>
+              </div>
+            </div>
+            <div class="tech-cat">
+              <div class="tech-cat__title">Nage-waza (投技) — Techniques de projection</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">大</div><div class="tech-card__body"><div class="tech-card__fr">O-goshi</div><div class="tech-card__jp">大腰</div><div class="tech-card__desc">Grande hanche — projection par la hanche, saisie à la ceinture</div></div><span class="tech-card__cat">Koshi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">膝</div><div class="tech-card__body"><div class="tech-card__fr">Hiza Guruma</div><div class="tech-card__jp">膝車</div><div class="tech-card__desc">Roue sur le genou — blocage du genou adverse</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">支</div><div class="tech-card__body"><div class="tech-card__fr">Sasae Tsurikomi Ashi</div><div class="tech-card__jp">支釣込足</div><div class="tech-card__desc">Blocage du pied avec traction sur le col</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+              </div>
+            </div>
+            <div class="tech-cat">
+              <div class="tech-cat__title">Katame-waza (固技) — Techniques au sol</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">袈</div><div class="tech-card__body"><div class="tech-card__fr">Kesa Gatame</div><div class="tech-card__jp">袈裟固</div><div class="tech-card__desc">Immobilisation écharpe — contrôle tête-bras</div></div><span class="tech-card__cat">Osaekomi</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">横</div><div class="tech-card__body"><div class="tech-card__fr">Yoko Shiho Gatame</div><div class="tech-card__jp">横四方固</div><div class="tech-card__desc">Immobilisation latérale des quatre coins</div></div><span class="tech-card__cat">Osaekomi</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CEINTURE JAUNE ── -->
+        <div class="grade-section reveal" id="grade-jaune">
+          <div class="grade-header gh-yellow">
+            <div class="grade-belt-vis belt-yellow"></div>
+            <div class="grade-header__text">
+              <h2>Ceinture Jaune</h2>
+              <span class="kyu">5e Kyu — 黄帯 Ki Obi</span>
+            </div>
+          </div>
+          <p style="color:var(--gray-warm);margin-bottom:24px;font-size:0.95rem;">La jaune symbolise les premières pousses. Le judoka commence à comprendre les déséquilibres (kuzushi) et les directions de projection.</p>
+          <div class="tech-categories">
+            <div class="tech-cat">
+              <div class="tech-cat__title">Nage-waza — Debout</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">出</div><div class="tech-card__body"><div class="tech-card__fr">De Ashi Barai</div><div class="tech-card__jp">出足払</div><div class="tech-card__desc">Fauchage du pied avancé dans la progression</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">体</div><div class="tech-card__body"><div class="tech-card__fr">Tai Otoshi</div><div class="tech-card__jp">体落</div><div class="tech-card__desc">Projection par blocage de jambe, corps en rotation</div></div><span class="tech-card__cat">Te-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">小</div><div class="tech-card__body"><div class="tech-card__fr">Ko-uchi Gari</div><div class="tech-card__jp">小内刈</div><div class="tech-card__desc">Faucille intérieure — fauchage de la cheville interne</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">一</div><div class="tech-card__body"><div class="tech-card__fr">Ippon Seoinage</div><div class="tech-card__jp">一本背負投</div><div class="tech-card__desc">Projection en force par-dessus l'épaule (saisie col)</div></div><span class="tech-card__cat">Te-waza</span></div>
+              </div>
+            </div>
+            <div class="tech-cat">
+              <div class="tech-cat__title">Katame-waza — Sol</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">縦</div><div class="tech-card__body"><div class="tech-card__fr">Tate Shiho Gatame</div><div class="tech-card__jp">縦四方固</div><div class="tech-card__desc">Immobilisation verticale des quatre coins</div></div><span class="tech-card__cat">Osaekomi</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">上</div><div class="tech-card__body"><div class="tech-card__fr">Kami Shiho Gatame</div><div class="tech-card__jp">上四方固</div><div class="tech-card__desc">Immobilisation par le dessus, tête entre les genoux</div></div><span class="tech-card__cat">Osaekomi</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CEINTURE ORANGE ── -->
+        <div class="grade-section reveal" id="grade-orange">
+          <div class="grade-header gh-orange">
+            <div class="grade-belt-vis belt-orange"></div>
+            <div class="grade-header__text">
+              <h2>Ceinture Orange</h2>
+              <span class="kyu">4e Kyu — 橙帯 Daidai Obi</span>
+            </div>
+          </div>
+          <p style="color:var(--gray-warm);margin-bottom:24px;font-size:0.95rem;">La ceinture orange représente le soleil levant — la technique commence à s'affirmer. Le judoka développe la fluidité des enchaînements et appréhende les premières clés de bras.</p>
+          <div class="tech-categories">
+            <div class="tech-cat">
+              <div class="tech-cat__title">Nage-waza</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">大</div><div class="tech-card__body"><div class="tech-card__fr">O-uchi Gari</div><div class="tech-card__jp">大内刈</div><div class="tech-card__desc">Grande faucille intérieure — fauchage du talon</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">払</div><div class="tech-card__body"><div class="tech-card__fr">Harai Goshi</div><div class="tech-card__jp">払腰</div><div class="tech-card__desc">Hanche balayante — combinaison jambe et hanche</div></div><span class="tech-card__cat">Koshi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">内</div><div class="tech-card__body"><div class="tech-card__fr">Uchi Mata</div><div class="tech-card__jp">内股</div><div class="tech-card__desc">Fauchage intérieur de la cuisse — technique emblématique</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">肩</div><div class="tech-card__body"><div class="tech-card__fr">Seoi Nage</div><div class="tech-card__jp">背負投</div><div class="tech-card__desc">Projection sur le dos, saisie aux deux manches</div></div><span class="tech-card__cat">Te-waza</span></div>
+              </div>
+            </div>
+            <div class="tech-cat">
+              <div class="tech-cat__title">Katame-waza — Clés de bras (introduction)</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">腕</div><div class="tech-card__body"><div class="tech-card__fr">Ude Gatame</div><div class="tech-card__jp">腕固</div><div class="tech-card__desc">Clé de bras en extension (coude en hyperextension)</div></div><span class="tech-card__cat">Kansetsu</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">送</div><div class="tech-card__body"><div class="tech-card__fr">Okuri Eri Jime</div><div class="tech-card__jp">送襟絞</div><div class="tech-card__desc">Étranglement en coulissant les cols croisés</div></div><span class="tech-card__cat">Shime-waza</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CEINTURE VERTE ── -->
+        <div class="grade-section reveal" id="grade-verte">
+          <div class="grade-header gh-green">
+            <div class="grade-belt-vis belt-green"></div>
+            <div class="grade-header__text">
+              <h2>Ceinture Verte</h2>
+              <span class="kyu">3e Kyu — 緑帯 Midori Obi</span>
+            </div>
+          </div>
+          <p style="color:var(--gray-warm);margin-bottom:24px;font-size:0.95rem;">La verte marque la maturité de la plante. Le judoka commence à développer son style personnel, enchaîne aisément debout et au sol, et comprend la stratégie du combat.</p>
+          <div class="tech-categories">
+            <div class="tech-cat">
+              <div class="tech-cat__title">Nage-waza — Techniques avancées</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">背</div><div class="tech-card__body"><div class="tech-card__fr">Ura Nage</div><div class="tech-card__jp">裏投</div><div class="tech-card__desc">Projection de revers — tomber en arrière avec uke</div></div><span class="tech-card__cat">Ma-sutemi</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">跳</div><div class="tech-card__body"><div class="tech-card__fr">Harai Tsurikomi Ashi</div><div class="tech-card__jp">払釣込足</div><div class="tech-card__desc">Balayage avec soulèvement et traction au col</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">釣</div><div class="tech-card__body"><div class="tech-card__fr">Tsuri Goshi</div><div class="tech-card__jp">釣腰</div><div class="tech-card__desc">Hanche soulevante — saisie à la ceinture, élévation</div></div><span class="tech-card__cat">Koshi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">燕</div><div class="tech-card__body"><div class="tech-card__fr">Tsubame Gaeshi</div><div class="tech-card__jp">燕返</div><div class="tech-card__desc">Contre d'hirondelle — contre-attaque au De Ashi Barai</div></div><span class="tech-card__cat">Kaeshi-waza</span></div>
+              </div>
+            </div>
+            <div class="tech-cat">
+              <div class="tech-cat__title">Katame-waza — Sol</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">十</div><div class="tech-card__body"><div class="tech-card__fr">Juji Gatame</div><div class="tech-card__jp">十字固</div><div class="tech-card__desc">Clé de bras en croix — technique de référence au sol</div></div><span class="tech-card__cat">Kansetsu</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">三</div><div class="tech-card__body"><div class="tech-card__fr">Sankaku Jime</div><div class="tech-card__jp">三角絞</div><div class="tech-card__desc">Étranglement en triangle avec les jambes</div></div><span class="tech-card__cat">Shime-waza</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CEINTURE BLEUE ── -->
+        <div class="grade-section reveal" id="grade-bleue">
+          <div class="grade-header gh-blue">
+            <div class="grade-belt-vis belt-blue"></div>
+            <div class="grade-header__text">
+              <h2>Ceinture Bleue</h2>
+              <span class="kyu">2e Kyu — 青帯 Ao Obi</span>
+            </div>
+          </div>
+          <p style="color:var(--gray-warm);margin-bottom:24px;font-size:0.95rem;">La bleue représente le ciel — la vision s'élargit. La connaissance technique est solide, les enchaînements debout-sol sont fluides, le judoka commence à forger son judo personnel.</p>
+          <div class="tech-categories">
+            <div class="tech-cat">
+              <div class="tech-cat__title">Nage-waza — Perfectionnement</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">大</div><div class="tech-card__body"><div class="tech-card__fr">O-soto Gari</div><div class="tech-card__jp">大外刈</div><div class="tech-card__desc">Grande faucille extérieure — technique puissante sur reculade</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">浮</div><div class="tech-card__body"><div class="tech-card__fr">Uki Waza</div><div class="tech-card__jp">浮技</div><div class="tech-card__desc">Technique flottante — sacrifice latéral sur avancée adverse</div></div><span class="tech-card__cat">Yoko-sutemi</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">隅</div><div class="tech-card__body"><div class="tech-card__fr">Tomoe Nage</div><div class="tech-card__jp">巴投</div><div class="tech-card__desc">Projection circulaire — sacrifice avant, pied sur abdomen</div></div><span class="tech-card__cat">Ma-sutemi</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">跳</div><div class="tech-card__body"><div class="tech-card__fr">Hane Goshi</div><div class="tech-card__jp">跳腰</div><div class="tech-card__desc">Hanche rebondissante — impulsion de la jambe avant</div></div><span class="tech-card__cat">Koshi-waza</span></div>
+              </div>
+            </div>
+            <div class="tech-cat">
+              <div class="tech-cat__title">Renraku-waza — Enchaînements</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">連</div><div class="tech-card__body"><div class="tech-card__fr">Ko-uchi → O-uchi</div><div class="tech-card__jp">連絡技</div><div class="tech-card__desc">Enchaînement faucille intérieure petite → grande</div></div><span class="tech-card__cat">Renraku</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">変</div><div class="tech-card__body"><div class="tech-card__fr">O-soto → Seoi Nage</div><div class="tech-card__jp">変化技</div><div class="tech-card__desc">Faucille extérieure feinte → projection sur le dos</div></div><span class="tech-card__cat">Renraku</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CEINTURE MARRON ── -->
+        <div class="grade-section reveal" id="grade-marron">
+          <div class="grade-header gh-brown">
+            <div class="grade-belt-vis belt-brown"></div>
+            <div class="grade-header__text">
+              <h2>Ceinture Marron</h2>
+              <span class="kyu">1er Kyu — 茶帯 Cha Obi</span>
+            </div>
+          </div>
+          <p style="color:var(--gray-warm);margin-bottom:24px;font-size:0.95rem;">La ceinture marron est celle de la maturité — l'avant-dernière étape avant le Dan. Le judoka maîtrise l'ensemble des fondamentaux et se prépare à l'examen de 1er Dan.</p>
+          <div class="tech-categories">
+            <div class="tech-cat">
+              <div class="tech-cat__title">Nage-waza — Maîtrise complète</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">払</div><div class="tech-card__body"><div class="tech-card__fr">Ashi Guruma</div><div class="tech-card__jp">足車</div><div class="tech-card__desc">Roue par la jambe — blocage du mollet, rotation</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">内</div><div class="tech-card__body"><div class="tech-card__fr">O-guruma</div><div class="tech-card__jp">大車</div><div class="tech-card__desc">Grande roue — blocage de la cuisse haute en reculade</div></div><span class="tech-card__cat">Ashi-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">変</div><div class="tech-card__body"><div class="tech-card__fr">Sumi Otoshi</div><div class="tech-card__jp">隅落</div><div class="tech-card__desc">Projection en coin — traction sur le déséquilibre arrière</div></div><span class="tech-card__cat">Te-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">股</div><div class="tech-card__body"><div class="tech-card__fr">Koshi Guruma</div><div class="tech-card__jp">腰車</div><div class="tech-card__desc">Roue par la hanche — col autour du cou, hanche pivot</div></div><span class="tech-card__cat">Koshi-waza</span></div>
+              </div>
+            </div>
+            <div class="tech-cat">
+              <div class="tech-cat__title">Katame-waza — Maîtrise sol complète</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">腕</div><div class="tech-card__body"><div class="tech-card__fr">Ude Hishigi Juji Gatame</div><div class="tech-card__jp">腕挫十字固</div><div class="tech-card__desc">Clé de bras en croix — technique complète et sécurisée</div></div><span class="tech-card__cat">Kansetsu</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">裸</div><div class="tech-card__body"><div class="tech-card__fr">Hadaka Jime</div><div class="tech-card__jp">裸絞</div><div class="tech-card__desc">Étranglement à mains nues par derrière</div></div><span class="tech-card__cat">Shime-waza</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">逆</div><div class="tech-card__body"><div class="tech-card__fr">Gyaku Juji Jime</div><div class="tech-card__jp">逆十字絞</div><div class="tech-card__desc">Étranglement en croix inversée sur le col</div></div><span class="tech-card__cat">Shime-waza</span></div>
+              </div>
+            </div>
+            <div class="tech-cat">
+              <div class="tech-cat__title">Kaeshi-waza — Contre-attaques</div>
+              <div class="tech-list">
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">返</div><div class="tech-card__body"><div class="tech-card__fr">O-soto Gaeshi</div><div class="tech-card__jp">大外返</div><div class="tech-card__desc">Contre de la grande faucille extérieure</div></div><span class="tech-card__cat">Kaeshi</span></div>
+                <div class="tech-card"><div class="tech-card__kanji" lang="ja">払</div><div class="tech-card__body"><div class="tech-card__fr">Harai Goshi Gaeshi</div><div class="tech-card__jp">払腰返</div><div class="tech-card__desc">Contre de la hanche balayante</div></div><span class="tech-card__cat">Kaeshi</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         5. PREMIER DAN
+    ═══════════════════════════════════════ -->
+    <section class="section" id="premier-dan" aria-labelledby="dan-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Le sommet du parcours</div>
+          <h2 id="dan-title" class="section-title">Se présenter au<br><em>1er Dan 一段</em></h2>
+          <p class="section-desc">L'examen de 1er Dan est un moment crucial dans la vie d'un judoka. Il sanctionne une maîtrise technique solide et une pratique régulière sur plusieurs années.</p>
+        </div>
+        <div class="dan-layout reveal">
+          <div>
+            <h3 class="section-title" style="font-size:1.8rem;margin-bottom:24px;">Conditions<br><em>d'accès</em></h3>
+            <div class="dan-reqs">
+              <div class="dan-req"><div class="dan-req__icon">🎂</div><div class="dan-req__body"><h4>Âge minimum</h4><p>15 ans révolus au jour de l'examen.</p></div></div>
+              <div class="dan-req"><div class="dan-req__icon">🟤</div><div class="dan-req__body"><h4>Grade requis</h4><p>Être titulaire de la ceinture marron (1er Kyu) depuis au moins 6 mois.</p></div></div>
+              <div class="dan-req"><div class="dan-req__icon">📅</div><div class="dan-req__body"><h4>Licence valide</h4><p>Être licencié FFJDA en cours de saison au moment de l'examen.</p></div></div>
+              <div class="dan-req"><div class="dan-req__icon">🏆</div><div class="dan-req__body"><h4>Points de compétition</h4><p>Pour les moins de 30 ans : justifier d'un minimum de points obtenus en compétition officielle. Pour les 30 ans et plus : voie loisir possible sans obligation compétitive.</p></div></div>
+              <div class="dan-req"><div class="dan-req__icon">📝</div><div class="dan-req__body"><h4>Inscription</h4><p>Dossier à déposer auprès de la ligue régionale Auvergne-Rhône-Alpes. Les examens ont lieu plusieurs fois par an.</p></div></div>
+            </div>
+          </div>
+          <div>
+            <h3 class="section-title" style="font-size:1.8rem;margin-bottom:24px;">Contenu de<br><em>l'examen</em></h3>
+            <div class="dan-kata">
+              <div class="dan-kata-item"><span class="dan-kata-item__kanji" lang="ja">乱</span><div><h4>Randori (乱取り)</h4><p>Combat libre avec plusieurs partenaires de niveaux variés. Évaluation de la fluidité technique et du sens tactique.</p></div></div>
+              <div class="dan-kata-item"><div class="dan-kata-item__kanji">⚔️</div><div><h4>Techniques imposées</h4><p>Réalisation de techniques précises sur annonce : projections, immobilisations, clés, étranglements. Exécution propre et sécurisée exigée.</p></div></div>
+              <div class="dan-kata-item"><span class="dan-kata-item__kanji" lang="ja">形</span><div><h4>Nage-no-Kata (投の形)</h4><p>Les "Formes de projection" — 15 techniques codifiées en 5 groupes de 3, réalisées en binôme avec un Uke désigné. Obligatoire depuis 2020.</p></div></div>
+              <div class="dan-kata-item"><div class="dan-kata-item__kanji">📚</div><div><h4>Partie théorique</h4><p>Connaissance des règlements, de la terminologie japonaise des techniques, de l'histoire et de la philosophie du Judo.</p></div></div>
+            </div>
+            <div class="pricing-note" style="margin-top:20px;">
+              <h3>💡 Conseils de nos sensei</h3>
+              <ul>
+                <li>Préparer le Nage-no-Kata avec un partenaire dédié, au moins 3 mois à l'avance.</li>
+                <li>Participer à des stages inter-clubs pour s'exercer avec des inconnus.</li>
+                <li>Avoir une technique de référence (<em>tokui waza</em>) absolument maîtrisée.</li>
+                <li>Travailler la condition physique : le randori d'examen est exigeant.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-final section section--light" aria-labelledby="cta-tech">
+      <div class="container">
+        <div class="cta-final__content reveal">
+          <div class="cta-final__kanji" aria-hidden="true" lang="ja">道</div>
+          <h2 id="cta-tech">Progresser ensemble</h2>
+          <p>Nos sensei vous accompagnent sur cette voie, du premier cours jusqu'au Dan.</p>
+          <div class="cta-final__actions">
+            <a href="judo-inscription.html" class="btn btn--primary btn--large">Rejoindre le club</a>
+            <a href="judo-sensei.html" class="btn btn--outline">Rencontrer nos sensei</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><a href="judo-index.html" class="nav__logo footer__logo"><div class="logo-mon" aria-hidden="true">桜</div><div class="logo-text-wrap"><span class="logo-name">SAKURA</span><span class="logo-sub">Judo &amp; Ju-Jitsu</span></div></a><p>Club affilié à la FFJDA depuis 1987.</p><div class="footer__social"><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></div>
+        <nav class="footer__nav" aria-label="Navigation"><h3>Navigation</h3><ul role="list"><li><a href="judo-index.html">Accueil</a></li><li><a href="judo-club.html">Le Club</a></li><li><a href="judo-sensei.html">Sensei</a></li><li><a href="judo-horaires.html">Horaires</a></li><li><a href="judo-tarifs.html">Tarifs</a></li><li><a href="judo-techniques.html">Techniques</a></li><li><a href="judo-inscription.html">Inscription</a></li><li><a href="judo-contact.html">Contact</a></li></ul></nav>
+        <div class="footer__contact"><h3>Nous trouver</h3><address><p>🏯 28 Rue des Arts Martiaux, 69007 Lyon</p><p>📞 <a href="tel:+33478000000">04 78 00 00 00</a></p></address></div>
+        <div class="footer__legal"><h3>Légal</h3><ul role="list"><li><a href="judo-mentions.html">Mentions légales</a></li><li><a href="judo-confidentialite.html">Confidentialité</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2024 Sakura Judo &amp; Ju-Jitsu Club</p><p lang="ja" title="La voie douce">柔よく剛を制す</p></div>
+    </div>
+  </footer>
+  <script src="judo-script.js"></script>
+  <script>
+    // Grade nav active state on scroll
+    const gradeSections = document.querySelectorAll('.grade-section');
+    const gradeNavBtns = document.querySelectorAll('.grade-nav-btn');
+    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+    function updateGradeNav() {
+      let current = '';
+      gradeSections.forEach(s => { if (window.scrollY >= s.offsetTop - navH - 100) current = s.id; });
+      gradeNavBtns.forEach(b => { b.classList.toggle('active', b.getAttribute('href') === '#' + current); });
+    }
+    window.addEventListener('scroll', updateGradeNav, { passive: true });
+  </script>
+</body>
+</html>
